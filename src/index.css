@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Deja aire arriba al saltar por anclas en móvil (barra superior fija). */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-bg text-cream font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Fondo con manchas de fuego para que la parrilla nunca se sienta plana. */
+    background-color: #141110;
+    background-image:
+      radial-gradient(40rem 40rem at 12% -8%, rgba(231, 57, 43, 0.14), transparent 60%),
+      radial-gradient(38rem 38rem at 100% 8%, rgba(246, 133, 42, 0.1), transparent 58%),
+      radial-gradient(44rem 44rem at 60% 120%, rgba(245, 178, 45, 0.08), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    background: #e7392b;
+    color: #f8f2e8;
+  }
+
+  /* Scrollbar con acento de fuego. */
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #141110;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #3a322b;
+    border: 2px solid #141110;
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e7392b;
+  }
+
+  /* Foco visible y consistente (accesibilidad). */
+  :focus-visible {
+    outline: 3px solid #f5b22d;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Etiqueta pequeña en mayúsculas con acento ámbar. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-amber;
+  }
+
+  /* Botón sólido de fuego con sombra dura (lenguaje de formas de la variante). */
+  .btn-flame {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-flame px-6 py-3
+           text-sm font-bold uppercase tracking-wide text-cream shadow-hard
+           transition-all duration-200
+           hover:-translate-y-0.5 hover:bg-[#ff4436] hover:shadow-hard-lg
+           focus-visible:-translate-y-0.5
+           active:translate-x-[3px] active:translate-y-[3px] active:shadow-none;
+  }
+
+  /* Botón ámbar (acento secundario). */
+  .btn-amber {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-amber px-6 py-3
+           text-sm font-bold uppercase tracking-wide text-bg shadow-hard
+           transition-all duration-200
+           hover:-translate-y-0.5 hover:bg-[#ffc24d] hover:shadow-hard-lg
+           focus-visible:-translate-y-0.5
+           active:translate-x-[3px] active:translate-y-[3px] active:shadow-none;
+  }
+
+  /* Botón contorno. */
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-line
+           bg-transparent px-6 py-3 text-sm font-bold uppercase tracking-wide text-cream
+           transition-colors duration-200
+           hover:border-amber hover:text-amber
+           focus-visible:border-amber focus-visible:text-amber;
+  }
+
+  /* Chip de filtro (tags de categoría). */
+  .chip {
+    @apply inline-flex items-center gap-2 rounded-full border-2 px-4 py-2 text-sm font-bold
+           transition-colors duration-200 cursor-pointer select-none;
+  }
+
+  /* Tarjeta base con borde definido y esquinas redondeadas. */
+  .card {
+    @apply rounded-2xl border-2 border-line bg-card;
+  }
+}
