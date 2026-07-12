@@ -4,7 +4,8 @@ dist-ssr
 *.local
 .env
 .env.*
-data
+# Base SQLite en la raíz del proyecto. El "/" inicial evita ignorar src/data/.
+/data
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
